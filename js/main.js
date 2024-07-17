@@ -124,7 +124,7 @@ function uniqueCharacters(str) {
     return result.join("");
 }
 
-console.log(uniqueCharacters("hello world")); // "helo wrd"
+// console.log(uniqueCharacters("hello world")); // "helo wrd"
 
 
 
