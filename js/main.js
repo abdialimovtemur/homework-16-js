@@ -26,19 +26,13 @@ function commonElements() {
 // 2. Berilgan ikki qatorning umumiy belgilarini qaytaring.
 
 function commonCharacters(str1, str2) {
-    let newArr = []
-    if (str1.length >= str2.length) {
-        for (let i = 0; i < str1.length; i++) {
-            for (let g = 0; g < str1.length; g++) {
-                if (str1[g] === str2[i]) {
-                    newArr.push(str1[g])
-                }
-            }
+    let newArr = [];
+    for (let i = 0; i < str1.length; i++) {
+        if (str2.includes(str1[i]) && !newArr.includes(str1[i])) {
+            newArr.push(str1[i]);
         }
-    }else{
-        console.log("str1 ning lengthi str2 ning lengithi dan katta bo'lishi kerak")
     }
-    console.log(newArr.reverse(""))
+    console.log(newArr.join(','))
 }
 
 // commonCharacters("hello", "world"); // "lo"
@@ -52,25 +46,29 @@ function commonCharacters(str1, str2) {
 
 
 
+
 // 3. Berilgan ikki massivdan simmetrik farqni toping (faqat birida bor va ikkinchisida yo'q elementlar)
 
 
-function symmetricDifference(arr1, arr2) {
-    for (let i = 0; i < arr1.length; i++) {
-        for (let g = 0; g < arr1.length; g++) {
-            if (arr1[i] === arr2[g]) {
-                console.log(arr1[i])
-            }else{
-                console.log(arr2[i])
-            }
+function symmetricDifference(massArr1, massArr2) {
+    let massNewArr = [];
+
+    for (let i = 0; i < massArr1.length; i++) {
+        if (!massArr2.includes(massArr1[i])) {
+            massNewArr.push(massArr1[i]);
         }
-        
     }
+
+    for (let i = 0; i < massArr2.length; i++) {
+        if (!massArr1.includes(massArr2[i])) {
+            massNewArr.push(massArr2[i]);
+        }
+    }
+
+    return massNewArr;
 }
 
-// symmetricDifference([1, 2, 3], [3, 4, 5]); // [1, 2, 4, 5]
-
-
+// console.log(symmetricDifference([1, 2, 3], [3, 4, 5])); // [1, 2, 4, 5]
 
 
 
@@ -82,12 +80,28 @@ function symmetricDifference(arr1, arr2) {
 // 4. Berilgan massiv ichida musbat, manfiy va nol qiymatli raqamlarning foizini hisoblang.
 
 
-// function calculatePercentages(arr) {
-//     // Code here
-// }
+function calculatePercentages(Calcarr) {
+    let positive = 0
+    let negative = 0
+    let zero = 0
+    let calcArr = []
+    Calcarr.forEach(element => {
+        if (element > 0) {
+            positive++
+        } else if (element < 0) {
+            negative++
+        } else {
+            zero++
+        }
+    });
+    let positivePersent = `Positive ${(100 * positive) / Calcarr.length}`
+    let negativePersent = `Negative ${(100 * negative) / Calcarr.length}`
+    let zeroPersent = `Zero ${(100 * zero) / Calcarr.length}`
+    calcArr.push(positivePersent, negativePersent, zeroPersent)
+    console.log(calcArr)
+}
 
-// console.log(calculatePercentages([1, -2, 0, 4, -5, 6, 0]));
-// // {positive: 42.86, negative: 28.57, zero: 28.57}
+// calculatePercentages([1, -2, 0, 4, -5, 6, 0]);
 
 
 
@@ -98,14 +112,19 @@ function symmetricDifference(arr1, arr2) {
 
 
 
-// 5. Berilgan qator ichidagi har bir belgini faqat bir marta qoldirib, unikal belgilar ketma-ketligini yarating.
+// 5. Berilgan qator ichidagi har bir elgini faqat bir marta qoldirib, unikal belgilar ketma-ketligini yarating.
 
+function uniqueCharacters(str) {
+    let result = [];
+    for (let i = 0; i < str.length; i++) {
+        if (!result.includes(str[i])) {
+            result.push(str[i]);
+        }
+    }
+    return result.join("");
+}
 
-// function uniqueCharacters(str) {
-//     // Code here
-// }
-
-// console.log(uniqueCharacters("hello world")); // "helo wrd"
+console.log(uniqueCharacters("hello world")); // "helo wrd"
 
 
 
@@ -139,10 +158,14 @@ function symmetricDifference(arr1, arr2) {
 
 
 function squareNumbers(arr) {
-    return arr
+    let squareNumberArr = []
+    arr.forEach(element => {
+        squareNumberArr.push(element * element)
+    });
+    console.log(squareNumberArr)
 }
 
-console.log(squareNumbers([1, 2, 3, 4, 5])); // [1, 4, 9, 16, 25]
+// console.log(squareNumbers([1, 2, 3, 4, 5])); 
 
 
 
@@ -160,11 +183,10 @@ console.log(squareNumbers([1, 2, 3, 4, 5])); // [1, 4, 9, 16, 25]
 function countPalindromNumbers(endNum) {
     let countStr = []
     for (let i = 1; i <= endNum; i++) {
-        let reverse = parseInt(i.toString().split('').reverse().join('')); 
+        let reverse = parseInt(i.toString().split('').reverse().join(''));
         if (i === reverse) {
             countStr.push(i)
         }
-        
     }
     console.log(countStr)
 }
