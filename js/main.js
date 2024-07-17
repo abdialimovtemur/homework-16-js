@@ -140,11 +140,20 @@ function uniqueCharacters(str) {
 // 6. Berilgan massivdan yig'indisi ma'lum bir qiymatga teng bo'lgan sonlar juftligini toping.
 
 
-// function findPairs(arr, target) {
-//     // Code here
-// }
-
-// console.log(findPairs([1, 2, 3, 4, 5], 6)); // [[1, 5], [2, 4]]
+function findPairs(arr, target) {
+    let result = [];
+    for (let i = 0; i < arr.length; i++) {
+      for (let j = i + 1; j < arr.length; j++) {
+        if (arr[i] + arr[j] === target) {
+          result.push([arr[i], arr[j]]);
+        }
+      }
+    }
+    console.log(result);
+  }
+  
+//   findPairs([1, 2, 3, 4, 5], 6); // [[1, 5], [2, 4]]
+  
 
 
 
